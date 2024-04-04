@@ -5,24 +5,19 @@ block content
   
   div.container-fluid
     div.row
-      -
-        let results = [
-          { item_type: 'Candies', item_name: 'Kit Kat', item_price: 0.75 },
-          { item_type: 'Snacks', item_name: 'Mixture', item_price: 20 },
-          { item_type: 'Beverages', item_name: 'orange-juice', item_price: 10 }
-        ]
+    let groceries = results
         
-      each groceries,index in results
+      each groceries, index in results
         .col-sm-2 
         div.col-sm-2(onclick=`buy(${index})`)
         
-          p Dress Type: #{groceries.item_type}
-          p Size: #{groceries.item_name}
-          p Price: $#{groceries.item_price.toFixed(2)}
+          p item_type: #{groceries.item_type}
+          p item_name : #{groceries.item_name}
+          p item_price: $#{groceries.item_price.toFixed(2)}
 
   a(href="/") Back to index
 
-    script. 
-        function buy(index) {
-            alert(`You purchased item ${index}`);
-        }
+   script.
+    function buy(index) {
+        alert(`You purchased item ${index}`);
+    }

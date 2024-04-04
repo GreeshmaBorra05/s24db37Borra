@@ -1,9 +1,6 @@
 var express = require('express');
+const groceries_controllers= require('../controllers/groceries');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('groceries', { title: 'Search Results for Groceries' });
-});
-
+/* GET Groceries */
+router.get('/', groceries_controllers.groceries_view_all_Page );
 module.exports = router;
