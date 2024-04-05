@@ -6,9 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var groceriesRouter = require('./routes/groceries'); //groceries endpoint added
-var gridRouter = require('./routes/grid'); //grid endpoint added
-var pickRouter = require('./routes/pick');//pick endpoint added
+var groceriesRouter = require('./routes/groceries');
+var gridRouter = require('./routes/grid'); 
+var pickRouter = require('./routes/pick');
 var groceries = require("./models/groceries");
 //const groceries = require('./models/groceries');
 var resourceRouter = require('./routes/resource');
