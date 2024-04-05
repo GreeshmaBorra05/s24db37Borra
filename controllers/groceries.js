@@ -42,9 +42,6 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 }
-
-
-
 // List of all groceries
 exports.groceries_list = async function (req, res) {
     try {
