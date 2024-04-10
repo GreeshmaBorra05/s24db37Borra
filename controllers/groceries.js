@@ -19,10 +19,10 @@ exports.groceries_create_post = function (req, res) {
     res.send('NOT IMPLEMENTED: groceries create POST');
 };
 // Handle groceries delete from on DELETE.
-exports.costume_delete = async function(req, res) {
+exports.groceries_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
-        result = await Costume.findByIdAndDelete( req.params.id)
+        result = await groceries.findByIdAndDelete( req.params.id)
         console.log("Removed " + result)
         res.send(result)
     } catch (err) {
@@ -75,6 +75,19 @@ exports.groceries_view_all_Page = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// Handle a show one view with id specified by query
+exports.groceries_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+        result = await groceries.findById( req.query.id)
+        res.render('groceriesdetail', { title: 'groceries Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+   };
 
 // Handle   Groceries create on POST.
 exports.groceries_create_post = async function(req, res) {

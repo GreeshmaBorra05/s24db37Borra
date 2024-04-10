@@ -1,0 +1,21 @@
+extends layout
+block content
+ h1= title
+ - let groceriesid = toShow._id
+ - let groceries_type = toShow.groceries_type
+ - let groceries_size = toShow.groceries_size
+ - let groceries_cost = toShow.groceries_cost
+
+ div
+    div.row
+        div(class='groceriesAttr mr-3') Groceries ID is:
+        div #{groceriesid}
+    div.row
+        div(class='groceriesAttr mr-3') Groceries Type is:
+        div #{groceries_type}
+    div.row
+        div(class='groceriesAttr mr-3') Groceries Size is:
+        div #{groceries_size}
+    div.row
+        div(class='groceriesAttr mr-3') Groceries Cost is:
+        div #{groceries_cost}
