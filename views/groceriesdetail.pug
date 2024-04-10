@@ -1,21 +1,28 @@
 extends layout
-block content
- h1= title
- - let groceriesid = toShow._id
- - let groceries_type = toShow.groceries_type
- - let groceries_size = toShow.groceries_size
- - let groceries_cost = toShow.groceries_cost
 
- div
-    div.row
-        div(class='groceriesAttr mr-3') Groceries ID is:
-        div #{groceriesid}
-    div.row
-        div(class='groceriesAttr mr-3') Groceries Type is:
-        div #{groceries_type}
-    div.row
-        div(class='groceriesAttr mr-3') Groceries Size is:
-        div #{groceries_size}
-    div.row
-        div(class='groceriesAttr mr-3') Groceries Cost is:
-        div #{groceries_cost}
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to show
+    else
+        - let groceriesid = toShow._id
+        - let groceries_type = toShow.type
+        - let groceries_size = toShow.size
+        - let groceries_cost = toShow.cost
+        div.container
+            div.row
+                div.col-md-6
+                    div.card
+                        div.card-body
+                            div.row.mb-2
+                                div.col-sm-6.vehiclesAttr Vehicles ID is:
+                                div.col-sm-6 #{groceriesid}
+                            div.row.mb-2
+                                div.col-sm-6.vehiclesAttr Vehicles name is:
+                                div.col-sm-6 #{groceries_type}
+                            div.row.mb-2
+                                div.col-sm-6.vehiclesAttr Vehicles Mileage is:
+                                div.col-sm-6 #{groceries_size}
+                            div.row.mb-2
+                                div.col-sm-6.vehiclesAttr Vehicles Price is:
+                                div.col-sm-6 #{groceries_cost}
