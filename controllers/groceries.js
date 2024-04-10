@@ -19,9 +19,18 @@ exports.groceries_create_post = function (req, res) {
     res.send('NOT IMPLEMENTED: groceries create POST');
 };
 // Handle groceries delete from on DELETE.
-exports.groceries_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: groceries delete DELETE ' + req.params.id);
+exports.costume_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await Costume.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
+
 // Handle groceries update form on PUT.
 exports.groceries_update_put = async function(req, res) {
 console.log(`update on id ${req.params.id} with body
