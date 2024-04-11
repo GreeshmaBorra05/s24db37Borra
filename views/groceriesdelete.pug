@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let item_id = toShow._id
+    - let item_type = toShow.item_type
+    - let item_name = toShow.cost
+    - let item_price = toShow.size
+    - let actionid = "/resource/groceries/" + item_id
+    script.
+      let actionid = "#{actionid}"
+    div
+      div.row
+        div.groceriesAttr.mr-3 Groceries ID is:
+        div #{item_id}
+      div.row
+        div.groceriesAttr.mr-3 Groceries Type is:
+        div #{item_type}
+      div.row
+        div.groceriesAttr.mr-3 Groceries Size is:
+        div #{item_price}
+      div.row
+        div.groceriesAttr.mr-3 Groceries Cost is:
+        div #{item_name}
+      button.btn.btn-danger.m-2(onclick="deleteOnid()") Delete
+      button.btn.btn-secondary.m-2(onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the groceries collection
+        window.location.href='/groceries'
+      }
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/groceries'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error )
+        });
+      }

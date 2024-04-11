@@ -1,20 +1,24 @@
 extends layout
+
 block content
-    h1= title
-    - let groceriesid = toShow._id
-    - let groceries_type = toShow.groceries_type
-    - let groceriescost = toShow.cost
-    - let groceriessize = toShow.size
+  h1= title
+  if toShow == null
+    h2 No instance to show
+  else
+    - let item_id = toShow._id
+    - let item_type = toShow.item_type
+    - let item_name = toShow.item_name
+    - let item_price = toShow.item_price
     div
-        div.row
-            div(class='costumeAttr mr-3') Costume ID is:
-            div #{groceriesid}
-        div.row
-            div(class='costumeAttr mr-3') Costume Type is:
-            div #{groceries_type}
-        div.row
-            div(class='costumeAttr mr-3') Costume Size is:
-            div #{groceriescost}
-        div.row
-            div(class='costumeAttr mr-3') Costume Cost is:
-            div #{groceriessize}
+      div.row
+        div.groceriesAttr.mr-3 Groceries ID is:
+        div #{item_id}
+      div.row
+        div.groceriesAttr.mr-3 Item Type is:
+        div #{item_type}
+      div.row
+        div.groceriesAttr.mr-3 Item Name is:
+        div #{item_name}
+      div.row
+        div.groceriesAttr.mr-3 Item Price is:
+        div #{item_price}
