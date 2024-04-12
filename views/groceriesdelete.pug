@@ -7,8 +7,8 @@ block content
   else
     - let item_id = toShow._id
     - let item_type = toShow.item_type
-    - let item_name = toShow.cost
-    - let item_price = toShow.size
+    - let item_name = toShow.item_name
+    - let item_price = toShow.item_price
     - let actionid = "/resource/groceries/" + item_id
     script.
       let actionid = "#{actionid}"
@@ -21,10 +21,10 @@ block content
         div #{item_type}
       div.row
         div.groceriesAttr.mr-3 Groceries Size is:
-        div #{item_price}
+        div #{item_name}
       div.row
         div.groceriesAttr.mr-3 Groceries Cost is:
-        div #{item_name}
+        div #{item_price}
       button.btn.btn-danger.m-2(onclick="deleteOnid()") Delete
       button.btn.btn-secondary.m-2(onclick="cancel()") Cancel
     script.
