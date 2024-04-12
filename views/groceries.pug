@@ -4,20 +4,24 @@ block content
   h1= title
   
   div.container-fluid
-    div.row
-    let groceries = results
+    div(class="row m-1")
         
       each groceries, index in results
-        .col-sm-2 
-        div.col-sm-2(onclick=`buy(${index})`)
+        - let destination = `dispatch(\"/groceries/update?id=${groceries._id}\")`
+ 
+        div.col-sm-2
         
           p item_type: #{groceries.item_type}
           p item_name : #{groceries.item_name}
           p item_price: $#{groceries.item_price.toFixed(2)}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
 
   a(href="/") Back to index
 
    script.
+    function dispatch(path){
+      window.location.href=path
+    }
     function buy(index) {
         alert(`You purchased item ${index}`);
     }
